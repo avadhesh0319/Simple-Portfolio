@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Source Sans 3", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.75;
+            color: #414f61;
+            background: #fcfaf6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 700;
+            color: #13243b;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 58px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 20px;
+            line-height: 1.35;
+        }
+
+        p {
+            margin: 0 0 16px;
+        }
+
+        a {
+            color: #13243b;
+            text-decoration: none;
+            transition: color .25s;
+        }
+
+        a:hover {
+            color: #9c7328;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 26px;
+        }
+
+        .section {
+            padding: 100px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .light-section {
+            background: #f5f0e7;
+            border-top: 1px solid #ded5c4;
+            border-bottom: 1px solid #ded5c4;
+        }
+
+        .dark-section {
+            background: #13243b;
+            color: #bac6d5;
+            border-top: 3px double #9c7328;
+            border-bottom: 3px double #9c7328;
+        }
+
+        .dark-section h2,
+        .dark-section h3 {
+            color: #fff;
+        }
+
+        .section-title {
+            max-width: 740px;
+            margin: 0 auto 58px;
+            text-align: center;
+        }
+
+
+
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .section-title .divider {
+            justify-content: center;
+        }
+
+        .line {
+            width: 90%;
+            height: 1px;
+            background: #9c7328;
+            opacity: .7;
+        }
+
+        .diamond {
+            width: 7px;
+            height: 7px;
+            background: #9c7328;
+            transform: rotate(45deg);
+        }
+
+        .diamond.small {
+            width: 4px;
+            height: 4px;
+            opacity: .65;
+        }
+
+        .dark-section .line,
+        .dark-section .diamond {
+            background: #c19a4b;
+        }
+
+        .top-ornament {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+
+        .top-ornament svg {
+            width: 184px;
+            height: 22px;
+        }
+
+
+
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 15px 30px;
+            border: 1px solid #13243b;
+            background: #13243b;
+            color: #fff;
+            cursor: pointer;
+            transition: all .28s;
+        }
+
+        .button svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7;
+        }
+
+        .button:hover {
+            background: #9c7328;
+            border-color: #9c7328;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .button.outline {
+            background: transparent;
+            color: #13243b;
+        }
+
+        .button.outline:hover {
+            background: #13243b;
+            border-color: #13243b;
+            color: #fff;
+        }
+
+        .button.gold {
+            background: #9c7328;
+            border-color: #9c7328;
+        }
+
+        .button.gold:hover {
+            background: #13243b;
+            border-color: #13243b;
+        }
+
+        .small-link {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+
+
+        .top-bar {
+            background: #13243b;
+            color: #c0cbd8;
+            font-size: 13px;
+        }
+
+        .top-bar .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+
+        .top-bar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 22px;
+        }
+
+        .top-bar svg {
+            width: 14px;
+            height: 14px;
+            fill: #c19a4b;
+        }
+
+        .top-bar a {
+            color: #c0cbd8;
+        }
+
+        .top-bar a:hover {
+            color: #c19a4b;
+        }
+
+
+
+
+        .main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1040;
+            background: #fcfaf6;
+            border-bottom: 1px solid #ded5c4;
+        }
+
+        .main-nav .wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .logo-name {
+            display: block;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .logo-sub {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #9c7328;
+        }
+
+
+
+
+        .menu-check {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        .menu-btn {
+            display: none;
+            width: 48px;
+            height: 42px;
+            border: 1px solid #ded5c4;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .menu-icon,
+        .menu-icon::before,
+        .menu-icon::after {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #13243b;
+            position: relative;
+            transition: all .3s;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        .menu-icon::before {
+            top: -7px;
+        }
+
+        .menu-icon::after {
+            top: 7px;
+        }
+
+        .menu-overlay {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu a {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4b5b71;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            bottom: 4px;
+            height: 1.5px;
+            background: #9c7328;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .menu a:hover {
+            color: #13243b;
+        }
+
+        .menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hire-btn {
+            margin-left: 14px;
+        }
+
+        .hire-btn a {
+            padding: 12px 22px;
+            background: #13243b;
+            color: #fff;
+        }
+
+        .hire-btn a::after {
+            display: none;
+        }
+
+        .hire-btn a:hover {
+            background: #9c7328;
+            color: #fff;
+        }
+
+
+
+        .hero {
+            padding: 96px 0 84px;
+            scroll-margin-top: 80px;
+            background: linear-gradient(180deg, #f5f0e7 0%, #fcfaf6 62%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.12fr .88fr;
+            gap: 66px;
+            align-items: center;
+        }
+
+        .hero .divider {
+            margin: 22px 0 18px;
+        }
+
+        .hero-role {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #4b5b71;
+        }
+
+        .hero-text {
+            max-width: 560px;
+            color: #4b5b71;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 52px;
+            padding-top: 30px;
+            border-top: 1px solid #ded5c4;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 40px;
+            line-height: 1;
+            color: #13243b;
+        }
+
+        .stat-number sup {
+            font-size: 19px;
+            color: #9c7328;
+        }
+
+        .stat-text {
+            display: block;
+            margin-top: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4b5b71;
+        }
+
+        .photo-box {
+            position: relative;
+            max-width: 400px;
+            margin-left: auto;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            padding: 16px;
+            box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+        }
+
+        .photo-frame img {
+            border: 1px solid #e9e2d5;
+            background: #f5f0e7;
+        }
+
+        .corner {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #9c7328;
+        }
+
+        .corner.tl {
+            top: 7px;
+            left: 7px;
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        .corner.tr {
+            top: 7px;
+            right: 7px;
+            border-left: 0;
+            border-bottom: 0;
+        }
+
+        .corner.bl {
+            bottom: 7px;
+            left: 7px;
+            border-right: 0;
+            border-top: 0;
+        }
+
+        .corner.br {
+            bottom: 7px;
+            right: 7px;
+            border-left: 0;
+            border-top: 0;
+        }
+
+        .badge-box {
+            position: absolute;
+            left: -30px;
+            bottom: 44px;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            border-left: 3px solid #9c7328;
+            padding: 13px 18px;
+            box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+        }
+
+        .badge-big {
+            display: block;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 25px;
+            line-height: 1;
+            color: #13243b;
+        }
+
+        .badge-small {
+            display: block;
+            margin-top: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4b5b71;
+        }
+
+
+
+
+        .tools {
+            background: #13243b;
+            border-top: 1px solid #2a466a;
+            border-bottom: 1px solid #2a466a;
+            padding: 20px 0;
+        }
+
+        .tools ul {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tools li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #8b9cb2;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .tools svg {
+            width: 17px;
+            height: 17px;
+            fill: #c19a4b;
+        }
+
+
+
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.04fr .96fr;
+            gap: 62px;
+            align-items: center;
+        }
+
+        .about-grid .divider {
+            margin-bottom: 24px;
+        }
+
+        .quote {
+            margin: 30px 0;
+            padding: 4px 0 4px 26px;
+            border-left: 3px solid #9c7328;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-style: italic;
+            font-size: 22px;
+            line-height: 1.55;
+            color: #13243b;
+        }
+
+        .signature {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-style: italic;
+            font-size: 32px;
+            color: #13243b;
+        }
+
+        .info-card {
+            background: #fff;
+            border: 1px solid #ded5c4;
+            box-shadow: 0 3px 12px rgba(19, 36, 59, .05);
+            padding: 38px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            gap: 18px;
+            padding: 11px 0;
+            border-bottom: 1px dotted #ded5c4;
+            font-size: 15px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .info-list b {
+            flex: 0 0 132px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #13243b;
+        }
+
+        .info-list span {
+            color: #4b5b71;
+        }
+
+        .info-card .button {
+            margin-top: 28px;
+        }
+
+
+
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px;
+        }
+
+        .skill-box {
+            position: relative;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            padding: 34px 28px 30px;
+            transition: all .32s;
+        }
+
+        .skill-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #9c7328;
+            transition: width .38s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+        }
+
+        .skill-box:hover::before {
+            width: 100%;
+        }
+
+        .skill-icon {
+            width: 58px;
+            height: 58px;
+            margin-bottom: 22px;
+            border: 1px solid #ded5c4;
+            background: #f5f0e7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s;
+        }
+
+        .skill-icon svg {
+            width: 27px;
+            height: 27px;
+            fill: none;
+            stroke: #13243b;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke .3s;
+        }
+
+        .skill-box:hover .skill-icon {
+            background: #13243b;
+            border-color: #13243b;
+        }
+
+        .skill-box:hover .skill-icon svg {
+            stroke: #c19a4b;
+        }
+
+        .skill-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .skill-box p,
+        .project-card p {
+            font-size: 15px;
+            color: #4b5b71;
+            margin-bottom: 0;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 18px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tags li {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid #ded5c4;
+            background: #fcfaf6;
+            color: #4b5b71;
+            padding: 4px 10px;
+        }
+
+        .level-area {
+            margin-top: 70px;
+            padding-top: 54px;
+            border-top: 1px solid #ded5c4;
+        }
+
+        .circle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px;
+            margin-top: 38px;
+            text-align: center;
+        }
+
+        .circle {
+            position: relative;
+            width: 142px;
+            height: 142px;
+            margin: 0 auto 16px;
+        }
+
+        .circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: #ece4d6;
+            stroke-width: 7;
+        }
+
+        .circle-fill {
+            fill: none;
+            stroke: #9c7328;
+            stroke-width: 7;
+            stroke-dasharray: 314.16;
+        }
+
+        /* 314.16 is the full circle, smaller offset = more filled */
+        .circle-90 .circle-fill {
+            stroke-dashoffset: 31.42;
+        }
+
+        .circle-88 .circle-fill {
+            stroke-dashoffset: 37.70;
+        }
+
+        .circle-85 .circle-fill {
+            stroke-dashoffset: 47.12;
+        }
+
+        .circle-80 .circle-fill {
+            stroke-dashoffset: 62.83;
+        }
+
+        .circle-number {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 26px;
+            color: #13243b;
+        }
+
+        .circle-name {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #13243b;
+        }
+
+        .circle-note {
+            display: block;
+            margin-top: 3px;
+            font-size: 14px;
+            color: #4b5b71;
+        }
+
+        .bar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px 58px;
+            margin-top: 46px;
+        }
+
+        .bar-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #13243b;
+        }
+
+        .bar-top b {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 16px;
+            color: #9c7328;
+        }
+
+        .bar-track {
+            height: 7px;
+            background: #ece4d6;
+            border: 1px solid #e9e2d5;
+        }
+
+        .bar-fill {
+            display: block;
+            height: 100%;
+            background: #13243b;
+        }
+
+        .bar-92 .bar-fill {
+            width: 92%;
+        }
+
+        .bar-86 .bar-fill {
+            width: 86%;
+        }
+
+        .bar-82 .bar-fill {
+            width: 82%;
+        }
+
+        .bar-78 .bar-fill {
+            width: 78%;
+        }
+
+
+
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            transition: all .32s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+        }
+
+        .project-card>img {
+            border-bottom: 1px solid #ded5c4;
+            background: #f5f0e7;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 28px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .project-info .tags {
+            margin-bottom: 20px;
+        }
+
+        .project-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #e9e2d5;
+            margin-top: auto;
+            padding-top: 18px;
+        }
+
+        .project-year {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            color: #9c7328;
+        }
+
+
+
+
+        .timeline {
+            position: relative;
+            padding-left: 38px;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: #2a466a;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 36px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 7px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid #9c7328;
+            background: #13243b;
+            transform: rotate(45deg);
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: -33px;
+            top: 12px;
+            width: 7px;
+            height: 7px;
+            background: #9c7328;
+            transform: rotate(45deg);
+        }
+
+        .timeline-year {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9c7328;
+        }
+
+        .timeline-item h3 {
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .timeline-place {
+            display: block;
+            margin-bottom: 11px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #93a7bf;
+        }
+
+        .timeline-item ul {
+            padding-left: 18px;
+            font-size: 15px;
+        }
+
+        .timeline-item ul li::marker {
+            color: #c19a4b;
+        }
+
+
+
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .review-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            padding: 34px 30px;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .review-card::after {
+            content: "\201C";
+            position: absolute;
+            top: 2px;
+            right: 18px;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 96px;
+            line-height: 1;
+            color: #ece4d6;
+        }
+
+        .review-card blockquote {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-style: italic;
+            font-size: 19px;
+            line-height: 1.6;
+            color: #1d3452;
+        }
+
+        .review-card figcaption {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #e9e2d5;
+        }
+
+        .avatar {
+            width: 46px;
+            height: 46px;
+            flex: 0 0 46px;
+            border-radius: 50%;
+            background: #13243b;
+            color: #c19a4b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", Georgia, serif;
+        }
+
+        .review-name {
+            display: block;
+            font-weight: 700;
+            font-size: 15px;
+            color: #13243b;
+            line-height: 1.3;
+        }
+
+        .review-role {
+            display: block;
+            font-size: 13px;
+            color: #4b5b71;
+        }
+
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .88fr 1.12fr;
+            gap: 56px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .13);
+        }
+
+        .contact-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 46px;
+            height: 46px;
+            flex: 0 0 46px;
+            border: 1px solid rgba(255, 255, 255, .22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: #c19a4b;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #8b9cb2;
+        }
+
+        .contact-value,
+        .contact-value a {
+            display: block;
+            color: #fff;
+        }
+
+        .contact-value a:hover {
+            color: #c19a4b;
+        }
+
+        .social {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social a {
+            width: 46px;
+            height: 46px;
+            border: 1px solid rgba(255, 255, 255, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .26s;
+        }
+
+        .social svg {
+            width: 18px;
+            height: 18px;
+            fill: #cbd5e1;
+        }
+
+        .social a:hover {
+            background: #9c7328;
+            border-color: #9c7328;
+        }
+
+        .social a:hover svg {
+            fill: #fff;
+        }
+
+        .contact-form {
+            background: #fcfaf6;
+            border: 1px solid #ded5c4;
+            padding: 38px;
+            box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+        }
+
+        .form-title {
+            display: block;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9c7328;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-grid p {
+            margin: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-grid label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #13243b;
+        }
+
+        .form-grid input,
+        .form-grid select,
+        .form-grid textarea {
+            width: 100%;
+            font-size: 16px;
+            color: #13243b;
+            background: #fff;
+            border: 1px solid #ded5c4;
+            padding: 12px 15px;
+            transition: all .25s;
+        }
+
+        .form-grid textarea {
+            resize: vertical;
+            min-height: 132px;
+        }
+
+        .form-grid input:focus,
+        .form-grid select:focus,
+        .form-grid textarea:focus {
+            outline: none;
+            border-color: #9c7328;
+            box-shadow: 0 0 0 3px rgba(156, 115, 40, .13);
+        }
+
+        /* ---------- footer ---------- */
+        .footer {
+            background: #0e1c2e;
+            color: #8b9cb2;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+        }
+
+        @keyframes drawCircle {
+            from {
+                stroke-dashoffset: 314.16;
+            }
+        }
+
+        @keyframes growBar {
+            from {
+                width: 0;
+            }
+        }
+
+        @supports (animation-timeline: view()) {
+            .reveal {
+                animation: fadeUp linear both;
+                animation-timeline: view();
+                animation-range: entry 4% cover 26%;
+            }
+
+            .circle-fill {
+                animation: drawCircle linear both;
+                animation-timeline: view();
+                animation-range: entry 12% cover 42%;
+            }
+
+            .bar-fill {
+                animation: growBar linear both;
+                animation-timeline: view();
+                animation-range: entry 12% cover 42%;
+            }
+        }
+
+
+
+
+        @media (max-width: 1100px) {
+
+            .skill-grid,
+            .circle-grid,
+            .project-grid,
+            .review-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tools ul {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section {
+                padding: 78px 0;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .top-bar {
+                display: none;
+            }
+
+            .menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                z-index: 2;
+                flex-direction: column;
+                align-items: stretch;
+                background: #fcfaf6;
+                border-bottom: 1px solid #ded5c4;
+                box-shadow: 0 10px 34px rgba(19, 36, 59, .1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .35s;
+            }
+
+            .menu li {
+                border-top: 1px solid #e9e2d5;
+            }
+
+            .menu a {
+                padding: 15px 26px;
+            }
+
+            .menu a::after {
+                display: none;
+            }
+
+            .hire-btn {
+                margin: 12px 26px 18px;
+            }
+
+            .hire-btn a {
+                text-align: center;
+            }
+
+
+            .menu-check:checked~.menu {
+                max-height: 580px;
+            }
+
+            .menu-check:checked~.menu-btn .menu-icon {
+                background: transparent;
+            }
+
+            .menu-check:checked~.menu-btn .menu-icon::before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            .menu-check:checked~.menu-btn .menu-icon::after {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+
+            .menu-check:checked~.menu-overlay {
+                display: block;
+                position: fixed;
+                inset: 0;
+                z-index: 1;
+                background: rgba(19, 36, 59, .28);
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid,
+            .bar-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .bar-grid {
+                gap: 22px;
+            }
+
+            .photo-box {
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .project-grid,
+            .review-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats,
+            .tools ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-card,
+            .contact-form {
+                padding: 26px;
+            }
+
+            .info-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .info-list b {
+                flex: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .skill-grid,
+            .circle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 62px 0 56px;
+            }
+
+            .badge-box {
+                left: 0;
+                bottom: -24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="wrap">
+            <div>
+                <span>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M2 5h20v14H2V5zm2.4 2L12 12.6 19.6 7H4.4zM4 8.3V17h16V8.3l-7.4 5.5a1 1 0 0 1-1.2 0L4 8.3z" />
+                    </svg>
+                    <a href="mailto:sharmaavadhesh142@gmail.com">sharmaavadhesh142@gmail.com</a>
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1l-2.2 2.2z" />
+                    </svg>
+                    <a href="tel:+91 1111111111">+91 1111111111</a>
+                </span>
+            </div>
+            <span>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7zm0 4.6A2.4 2.4 0 1 0 12 11a2.4 2.4 0 0 0 0-4.4z" />
+                </svg>
+                Navi Mumbai
+            </span>
+        </div>
+    </div>
+
+
+
+    <nav class="main-nav">
+        <div class="wrap">
+            <a class="logo" href="#home">
+                <span class="logo-name">Avadhesh Sharma</span>
+                <span class="logo-sub">B.Sc. Information Technology</span>
+            </a>
+
+            <input class="menu-check" type="checkbox" id="menuCheck" aria-label="Open menu">
+            <label class="menu-btn" for="menuCheck"><span class="menu-icon"></span></label>
+            <label class="menu-overlay" for="menuCheck"></label>
+
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li class="hire-btn"><a href="#contact">Hire Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+
+
+        <header class="hero" id="home">
+            <div class="wrap hero-grid">
+                <div class="reveal">
+                    <h1>Avadhesh Sharma</h1>
+
+                    <div class="divider">
+                        <span class="diamond"></span><span class="line"></span><span class="diamond small"></span>
+                    </div>
+
+                    <p class="hero-role">Web Developer · Software Developer</p>
+                    <p class="hero-text">
+                        I am a Bachelor of Science in Information Technology graduate from Mumbai University, with a
+                        CGPA of
+                        8.38/10, focused on web development, full-stack applications, and AI-powered development.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a class="button" href="#projects">View Portfolio</a>
+                        <a class="button outline" href="#contact">Contact Me</a>
+                        <a class="button outline" href="resume.pdf" download>Download CV</a>
+                    </div>
+
+                    <div class="stats">
+                        <div>
+                            <span class="stat-number">14<sup>+</sup></span>
+                            <span class="stat-text">Projects Delivered</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">06</span>
+                            <span class="stat-text">Certifications</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">1st</span>
+                            <span class="stat-text">1st prize in IT FEST</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">8.38</span>
+                            <span class="stat-text">CGPA of 10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="photo-box">
+                        <div class="photo-frame">
+                            <span class="corner tl"></span>
+                            <span class="corner tr"></span>
+                            <span class="corner bl"></span>
+                            <span class="corner br"></span>
+                            <img src="https://www.creativefabrica.com/wp-content/uploads/2023/01/27/Iron-Man-Portrait-By-Shinkai-Makoto-59071186-1.png"
+                                alt="Avadhesh Sharma">
+                        </div>
+                        <div class="badge-box">
+                            <span class="badge-big">Fresher</span>
+                            <span class="badge-small">Open To Work</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div class="tools">
+            <div class="wrap">
+                <ul>
+                    <li><svg viewBox="0 0 24 24">
+                            <path
+                                d="M11 2h3a4 4 0 0 1 4 4v4H10a4 4 0 0 0-4 4H4a3 3 0 0 1-3-3V8a4 4 0 0 1 4-4h6V2zm2 20h-3a4 4 0 0 1-4-4v-4h8a4 4 0 0 0 4-4h2a3 3 0 0 1 3 3v3a4 4 0 0 1-4 4h-6v2z" />
+                        </svg>HTML5</li>
+                    <li><svg viewBox="0 0 24 24">
+                            <path d="M12 2 3 7v10l9 5 9-5V7l-9-5zm0 4.6L17 9.4v5.2L12 17.4 7 14.6V9.4l5-2.8z" />
+                        </svg>CSS3</li>
+                    <li><svg viewBox="0 0 24 24">
+                            <path
+                                d="M2 12c0-3.3 4.5-6 10-6s10 2.7 10 6-4.5 6-10 6S2 15.3 2 12zm5-3-1.6 6h1.8l.4-1.6h1.1c1.5 0 2.5-.9 2.5-2.4 0-1.3-.8-2-2.2-2H7zm7.4 0-1.6 6h1.8l.4-1.6h1.1c1.5 0 2.5-.9 2.5-2.4 0-1.3-.8-2-2.2-2h-2z" />
+                        </svg>PHP</li>
+                    <li><svg viewBox="0 0 24 24">
+                            <ellipse cx="12" cy="6" rx="8" ry="3" />
+                            <path d="M4 6v5c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 13v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5" fill="none"
+                                stroke="#c19a4b" stroke-width="1.6" />
+                        </svg>MYSQL</li>
+                    <li><svg viewBox="0 0 24 24">
+                            <path d="M2 14h3v7H2zm5-4h3v11H7zm5-5h3v16h-3zm5 8h3v8h-3z" />
+                        </svg>JAVASCRIPT</li>
+                    <li><svg viewBox="0 0 24 24">
+                            <path d="M6.5 19a4.5 4.5 0 0 1-.5-9 6.5 6.5 0 0 1 12.4-1.6A4.6 4.6 0 0 1 17.8 19H6.5z" />
+                        </svg>PYTHON</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <section class="section" id="about">
+
+            <div class="wrap about-grid">
+                <div class="reveal">
+                    <h2>Introduction</h2>
+                    <div class="divider">
+                        <span class="diamond"></span><span class="line"></span>
+                    </div>
+                    <p>
+                        I am a <strong>Bachelor of Science in Information Technology</strong> graduate from Mumbai
+                        University,
+                        with a CGPA of 8.38/10, focused on web development, full-stack applications, and AI-powered
+                        development.
+                    </p>
+                    <p>
+                        I have hands-on experience working with HTML, CSS, JavaScript, PHP, Python, MySQL, and AI tools,
+                        and I
+                        enjoy building responsive, practical applications that solve real-world problems. My projects
+                        include a
+                        Smart Garbage Monitoring System, AI Chatbot, Cricket Club Management System, and responsive
+                        restaurant
+                        website.
+                    </p>
+                    <p class="quote">
+                        Good software is not just about writing code — it's about building solutions that are useful,
+                        reliable,
+                        and easy to maintain.
+                    </p>
+                    <p>With warm regards,</p>
+                    <p class="signature">Avadhesh Rajendra Sharma</p>
+                </div>
+
+                <div class="reveal">
+                    <div class="info-card">
+                        <h3>Profile at a Glance</h3>
+                        <ul class="info-list">
+                            <li><b>Full Name</b><span>Avadhesh Rajendra Sharma</span></li>
+                            <li><b>Degree</b><span>B.Sc. Information Technology</span></li>
+                            <li><b>University</b><span>Mumbai University · 2023 – 2026</span></li>
+                            <li><b>Specialism</b><span>Web Developer &amp; AI Powered Development</span></li>
+                            <li><b>Languages</b><span>English, Hindi, Marathi</span></li>
+                            <li><b>Location</b><span>Navi Mumbai</span></li>
+                            <li><b>Availability</b><span>Immediate · full-time or contract</span></li>
+                            <li><b>Interests</b><span>Web development, Attractive UI Design, Full Stack Developer</span>
+                            </li>
+                        </ul>
+                        <a class="button gold" href="#contact">Get Full Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section light-section" id="skills">
+
+            <div class="wrap">
+                <div class="top-ornament">
+                    <svg viewBox="0 0 184 22" fill="none" stroke="#9c7328" opacity=".7">
+                        <path d="M0 11h66M118 11h66" />
+                        <path d="M74 11c4-7 10-7 14 0-4 7-10 7-14 0zM110 11c-4-7-10-7-14 0 4 7 10 7 14 0z" />
+                        <path d="m92 5 4 6-4 6-4-6z" fill="#9c7328" />
+                    </svg>
+                </div>
+
+                <div class="section-title reveal">
+                    <h2>Technical Skill</h2>
+                    <div class="divider">
+                        <span class="diamond small"></span><span class="line"></span><span class="diamond"></span>
+                        <span class="line"></span><span class="diamond small"></span>
+                    </div>
+                </div>
+
+                <div class="skill-grid">
+                    <article class="skill-box reveal">
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18" />
+                            </svg>
+                        </span>
+                        <h3>Web Development</h3>
+                        <p>Building responsive, user-friendly web applications with clean and structured front-end
+                            development.</p>
+                        <ul class="tags">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Responsive Web Design</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-box reveal">
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24">
+                                <ellipse cx="12" cy="5.5" rx="8" ry="3" />
+                                <path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+                            </svg>
+                        </span>
+                        <h3>Programming &amp; Database</h3>
+                        <p>Developing practical applications using programming languages and relational database
+                            technologies.</p>
+                        <ul class="tags">
+                            <li>MySQL</li>
+                            <li>PHP</li>
+                            <li>MongoDB</li>
+                            <li>Python</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-box reveal">
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="3.5" width="20" height="13" rx="1" />
+                                <path d="M8 20.5h8M12 16.5v4" />
+                            </svg>
+                        </span>
+                        <h3>AI &amp; Development Tools</h3>
+                        <p>Using AI technologies and development tools to build smarter and more efficient applications.
+                        </p>
+                        <ul class="tags">
+                            <li>Generative AI</li>
+                            <li>AI APIs</li>
+                            <li>AI-Assisted Development</li>
+                            <li>Prompting</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-box reveal">
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" />
+                                <circle cx="4" cy="5" r="2" />
+                                <circle cx="20" cy="5" r="2" />
+                                <circle cx="4" cy="19" r="2" />
+                                <circle cx="20" cy="19" r="2" />
+                                <path d="m6 6.4 3.9 3.5M18 6.4 14.1 9.9M6 17.6l3.9-3.5M18 17.6l-3.9-3.5" />
+                            </svg>
+                        </span>
+                        <h3>Tools &amp; Systems</h3>
+                        <p>LAN design, subnetting, routing and switching labs, Linux administration and cloud
+                            fundamentals.</p>
+                        <ul class="tags">
+                            <li>MS Word</li>
+                            <li>MS Excel</li>
+                            <li>Linux</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="level-area reveal">
+                    <h3>Proficiency Assessment</h3>
+
+                    <div class="circle-grid">
+                        <div class="circle-90">
+                            <div class="circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50" />
+                                    <circle class="circle-fill" cx="60" cy="60" r="50" />
+                                </svg>
+                                <span class="circle-number">90%</span>
+                            </div>
+                            <span class="circle-name">Full Stack development</span>
+                            <span class="circle-note">Advanced — five major builds</span>
+                        </div>
+                        <div class="circle-88">
+                            <div class="circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50" />
+                                    <circle class="circle-fill" cx="60" cy="60" r="50" />
+                                </svg>
+                                <span class="circle-number">88%</span>
+                            </div>
+                            <span class="circle-name">SQL &amp; Design</span>
+                            <span class="circle-note">MYSQL and Database Design</span>
+                        </div>
+                        <div class="circle-85">
+                            <div class="circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50" />
+                                    <circle class="circle-fill" cx="60" cy="60" r="50" />
+                                </svg>
+                                <span class="circle-number">85%</span>
+                            </div>
+                            <span class="circle-name">Front-End</span>
+                            <span class="circle-note">HTML · CSS · Bootstrap</span>
+                        </div>
+                        <div class="circle-80">
+                            <div class="circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50" />
+                                    <circle class="circle-fill" cx="60" cy="60" r="50" />
+                                </svg>
+                                <span class="circle-number">80%</span>
+                            </div>
+                            <span class="circle-name">Backend</span>
+                            <span class="circle-note">Node.js, PHP and Python</span>
+                        </div>
+                    </div>
+
+                    <div class="bar-grid">
+                        <div class="bar-92">
+                            <div class="bar-top">Documentation &amp; Technical Writing <b>92%</b></div>
+                            <div class="bar-track"><span class="bar-fill"></span></div>
+                        </div>
+                        <div class="bar-86">
+                            <div class="bar-top">AI Tools &amp; Generative AI <b>86%</b></div>
+                            <div class="bar-track"><span class="bar-fill"></span></div>
+                        </div>
+                        <div class="bar-82">
+                            <div class="bar-top">Linux Administration <b>82%</b></div>
+                            <div class="bar-track"><span class="bar-fill"></span></div>
+                        </div>
+                        <div class="bar-78">
+                            <div class="bar-top">Responsive Design <b>78%</b></div>
+                            <div class="bar-track"><span class="bar-fill"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section" id="projects">
+
+            <div class="wrap">
+                <div class="section-title reveal">
+                    <h2>Academic Projects</h2>
+                    <div class="divider">
+                        <span class="diamond small"></span><span class="line"></span><span class="diamond"></span>
+                        <span class="line"></span><span class="diamond small"></span>
+                    </div>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card reveal">
+                        <img src="https://images.prismic.io/intuzwebsite/d9daef05-a416-4e84-b0f8-2d5e2e3b58d8_A+Comprehensive+Guide+to+Building+an+AI+Chatbot%402x.png?auto=compress,format"
+                            alt="AI Chatbot">
+                        <div class="project-info">
+                            <h3>AI Chatbot Web Assistant</h3>
+                            <p>An AI-powered floating chatbot with voice interaction, multilingual support, real-time
+                                responses, and Ollama integration.</p>
+                            <ul class="tags">
+                                <li>HTML &amp; CSS</li>
+                                <li>JavaScript</li>
+                                <li>Ollama</li>
+                                <li>Supabase</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <img src="https://www.hashstudioz.com/images/key_features_img.webp"
+                            alt="Smart Garbage Monitoring">
+                        <div class="project-info">
+                            <h3>Smart Garbage Monitoring</h3>
+                            <p>A smart complaint and monitoring platform with image upload, location tracking, and
+                                role-based dashboard system.</p>
+                            <ul class="tags">
+                                <li>HTML &amp; CSS</li>
+                                <li>JavaScript</li>
+                                <li>PHP &amp; MySQL</li>
+                                <li>OpenStreetMap</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <img src="https://truetym.com/upload/qr-code-for-attendance-69bcb2ed.png"
+                            alt="QR Attendance App">
+                        <div class="project-info">
+                            <h3>QR Attendance Android App</h3>
+                            <p>Classroom attendance capture using rotating QR tokens with geofence validation, offline
+                                synchronisation and lecturer analytics exports.</p>
+                            <ul class="tags">
+                                <li>Kotlin</li>
+                                <li>Firebase</li>
+                                <li>Material</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <img src="https://raw.githubusercontent.com/Aniket182001/Cricket-player-stats-dashboard-PowerBi/main/Virat%20Kohli%20Stats_page-0001.jpg"
+                            alt="Cricket Club Management">
+                        <div class="project-info">
+                            <h3>Cricket Club Management System</h3>
+                            <p>Full-stack sports management platform for handling players, matches, and performance
+                                tracking.</p>
+                            <ul class="tags">
+                                <li>HTML &amp; CSS</li>
+                                <li>JavaScript</li>
+                                <li>PHP &amp; MySQL</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <img src="https://www.suresolutions.in/wp-content/uploads/2025/06/rfid-library-management-system.webp"
+                            alt="Library Management">
+                        <div class="project-info">
+                            <h3>Library Management System</h3>
+                            <p>Web-based library management system designed to manage books, student records, borrowing
+                                and returning activities, with a simple and organized user interface.</p>
+                            <ul class="tags">
+                                <li>HTML &amp; CSS</li>
+                                <li>JavaScript</li>
+                                <li>PHP &amp; MySQL</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <img src="https://bootstrapbrain.com/wp-content/uploads/2024/03/38-Feliciano.jpg"
+                            alt="Restaurant Website">
+                        <div class="project-info">
+                            <h3>Restaurant Website</h3>
+                            <p>A complete restaurant website featuring menu categories, food details, pricing, gallery,
+                                services, contact information, and responsive design for all devices.</p>
+                            <ul class="tags">
+                                <li>PHP</li>
+                                <li>MySQL</li>
+                                <li>Bootstrap</li>
+                                <li>HTML &amp; CSS</li>
+                            </ul>
+                            <div class="project-bottom">
+                                <a class="small-link" href="#contact">Documentation</a>
+                                <span class="project-year">2026</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section dark-section" id="experience">
+            <div class="wrap">
+                <div class="section-title reveal">
+                    <h2>Education &amp; Experience</h2>
+                    <div class="divider">
+                        <span class="diamond"></span><span class="line"></span><span class="diamond small"></span>
+                    </div>
+                </div>
+
+                <ul class="timeline reveal">
+                    <li class="timeline-item">
+                        <span class="timeline-year">Year - 2021</span>
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <span class="timeline-place">Maharashtra State Board</span>
+                        <ul>
+                            <li>Percentage: 73.80%</li>
+                        </ul>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-year">Year - 2023</span>
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <span class="timeline-place">Maharashtra State Board</span>
+                        <ul>
+                            <li>Percentage: 64.50%</li>
+                        </ul>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-year">Year - 2026</span>
+                        <h3>Bachelor of Science in Information Technology (B.Sc IT)</h3>
+                        <span class="timeline-place">University of Mumbai</span>
+                        <ul>
+                            <li>CGPI: 8.38</li>
+                        </ul>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-year">July 2026 – Present</span>
+                        <h3>IT Executive – System Administrator</h3>
+                        <span class="timeline-place">Dombivli, Maharashtra</span>
+                        <ul>
+                            <li>Managing day-to-day IT infrastructure, system administration, CRUD operations, and
+                                troubleshooting to ensure smooth operation of systems and users.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <section class="section" id="reviews">
+            <div class="wrap">
+                <div class="section-title reveal">
+                    <h2>Testimony - What People Say</h2>
+                    <div class="divider">
+                        <span class="diamond small"></span><span class="line"></span><span class="diamond"></span>
+                        <span class="line"></span><span class="diamond small"></span>
+                    </div>
+                </div>
+
+                <div class="review-grid">
+                    <figure class="review-card reveal">
+                        <blockquote>“Not just talented but also incredibly helpful. Always ready to explain coding
+                            concepts and share resources. Passion for AI and web development is truly inspiring — a
+                            great companion and future tech leader!”</blockquote>
+                        <figcaption>
+                            <span class="avatar">FR</span>
+                            <span>
+                                <span class="review-name">Friend</span>
+                                <span class="review-role">Feedback</span>
+                            </span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="review-card reveal">
+                        <blockquote>“Demonstrates exceptional aptitude for emerging technologies. His AI chatbot project
+                            showcased innovative thinking and solid technical execution. Always eager to learn and helps
+                            fellow students understand complex concepts.”</blockquote>
+                        <figcaption>
+                            <span class="avatar">P</span>
+                            <span>
+                                <span class="review-name">Professor</span>
+                                <span class="review-role">Feedback</span>
+                            </span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="review-card reveal">
+                        <blockquote>“Working together on the Cricket Club Management System was a great experience. He
+                            took the lead on frontend development and delivered clean, responsive interfaces. Attention
+                            to detail and problem-solving skills are impressive.”</blockquote>
+                        <figcaption>
+                            <span class="avatar">T</span>
+                            <span>
+                                <span class="review-name">Teammate</span>
+                                <span class="review-role">Feedback</span>
+                            </span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section dark-section" id="contact">
+            <div class="wrap contact-grid">
+                <div class="reveal">
+                    <h2>Let us discuss</h2>
+                    <div class="divider">
+                        <span class="diamond"></span><span class="line"></span><span class="diamond small"></span>
+                    </div>
+
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M4 5h16v14H4z" />
+                                    <path d="m4 6 8 6 8-6" />
+                                </svg></span>
+                            <span>
+                                <span class="contact-label">Electronic Mail</span>
+                                <span class="contact-value"><a
+                                        href="mailto:sharmaavadhesh142@gmail.com">sharmaavadhesh142@gmail.com</a></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="contact-icon"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" />
+                                </svg></span>
+                            <span>
+                                <span class="contact-label">Telephone</span>
+                                <span class="contact-value"><a href="tel:+91 1111111111">+91 1111111111</a></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="contact-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z" />
+                                    <circle cx="12" cy="10" r="2.6" />
+                                </svg></span>
+                            <span>
+                                <span class="contact-label">Residence</span>
+                                <span class="contact-value">Navi Mumbai</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="contact-icon"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" />
+                                </svg></span>
+                            <span>
+                                <span class="contact-label">Portfolio</span>
+                                <span class="contact-value"><a
+                                        href="https://portfolio-lmc6.vercel.app/">https://portfolio-lmc6.vercel.app/</a></span>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <ul class="social">
+                        <li><a href="#contact" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8.25h4.5V24h-4.5zM8.5 8.25h4.3v2.15h.06a4.72 4.72 0 0 1 4.25-2.33c4.55 0 5.39 2.99 5.39 6.88V24h-4.5v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V24H8.5z" />
+                                </svg></a></li>
+                        <li><a href="#contact" aria-label="GitHub"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.79 2.74 1.27 3.41.97.1-.76.4-1.27.74-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z" />
+                                </svg></a></li>
+                        <li><a href="mailto:sharmaavadhesh142@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24">
+                                    <path d="M2 5h20v14H2zm2.4 2L12 12.6 19.6 7z" />
+                                </svg></a></li>
+                    </ul>
+                </div>
+
+                <div class="reveal">
+                    <div class="contact-form">
+                        <span class="form-title">Send a Message</span>
+
+                        <form class="form-grid" method="post" enctype="text/plain">
+                            <p>
+                                <label for="fullname">Full Name *</label>
+                                <input type="text" id="fullname" name="Name" placeholder="Your name" required>
+                            </p>
+                            <p>
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="Email" placeholder="abc@xyz.com" required>
+                            </p>
+                            <p>
+                                <label for="company">Company or Institution</label>
+                                <input type="text" id="company" name="Organisation" placeholder="abcd">
+                            </p>
+                            <p>
+                                <label for="reason">Reason for Contact *</label>
+                                <select id="reason" name="Reason" required>
+                                    <option value="">Please select…</option>
+                                    <option>Graduate or Junior Role</option>
+                                    <option>Internship</option>
+                                    <option>Freelance</option>
+                                    <option>Collaboration</option>
+                                    <option>Other Enquiry</option>
+                                </select>
+                            </p>
+                            <p class="full-width">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="Message" placeholder="Tell me about the role or project…"
+                                    required></textarea>
+                            </p>
+                            <p class="full-width">
+                                <button class="button" type="submit">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" />
+                                    </svg>
+                                    Send Message
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p>© 2026 Avadhesh Sharma</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
